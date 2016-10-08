@@ -35,9 +35,12 @@ module.exports = Main = (function() {
     this.communalAdjectives = this.model.at('communalAdjectives');
   };
 
-  Main.prototype.clicked = function(e) {
-    console.log('clicked');
-    console.log(e);
+  Main.prototype.create = function() {
+    return this.corpus.on('change', (function(_this) {
+      return function() {
+        return _this.analyzeCorpus();
+      };
+    })(this));
   };
 
   Main.prototype.analyzeCorpus = function() {
