@@ -36,7 +36,7 @@ module.exports = Main = (function() {
   };
 
   Main.prototype.create = function() {
-    return this.corpus.on('change', (function(_this) {
+    this.corpus.on('change', (function(_this) {
       return function() {
         return _this.analyzeCorpus();
       };
@@ -44,31 +44,25 @@ module.exports = Main = (function() {
   };
 
   Main.prototype.analyzeCorpus = function() {
-    var agenticCount, agentic, communalCount, communal, corpus, word, _i, _len, _ref;
-    corpus = this.corpus.get();
-    if (!corpus) {
-      return;
-    }
-    communal = {};
-    agentic = {};
-    agenticCount = 0;
-    communalCount = 0;
-    _ref = corpus.split(' ');
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      word = _ref[_i];
+    console.log('analyze!');
+    var corpus = this.corpus.getDeepCopy();
+
+    var communal = {};
+    var agentic = {};
+    var words = corpus.split(' ');
+    for (var i = 0, numWords = words.length; i < numWords; i++) {
+      word = words[i].replace(',', '').replace('.', '');
       if (AGENTIC[word] === true) {
         agentic[word] || (agentic[word] = 0);
         agentic[word] += 1;
-        agenticCount++;
       } else if (COMMUNAL[word] === true) {
         communal[word] || (communal[word] = 0);
         communal[word] += 1;
-        communalCount++;
       }
     }
+    console.log(agentic);
     this.agenticAdjectives.set(Object.keys(agentic));
     this.communalAdjectives.set(Object.keys(communal));
-    return this.score.set(communalCount - agenticCount);
   };
 
   return Main;

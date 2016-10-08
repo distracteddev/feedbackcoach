@@ -21,13 +21,13 @@
               {{corpus}}
             </textarea>
           </div>
-          <div class="input-group">
-            <button class="btn btn-primary input-group-btn"
-              on-click="clicked($element)">
-              hello
-            </button>
-          </div>
         </form>
+        <p>
+          Agentic: {{each agenticAdjectives as #adj}}{{#adj}}, {{/each}}
+        </p>
+        <p>
+          Communal: {{each communalAdjectives as #adj}}{{#adj}}, {{/each}}
+        </p>
       </div>
     </div>
 </div>
