@@ -7,8 +7,9 @@ app.serverUse(module, 'derby-stylus')
 app.loadViews(__dirname + '/../../views')
 app.loadStyles(__dirname + '/../../styles')
 
-// app.component(require('d-connection-alert'))
-// app.component(require('d-before-unload'))
+app.component(require('d-connection-alert'))
+app.component(require('d-before-unload'))
+app.component(require('../components/main'))
 
 app.get('/', (page, model, params, next) => {
   page.render('index.html')

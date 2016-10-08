@@ -1,0 +1,26 @@
+<index:>
+  <h1>Feedback Coach</h1>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-12">
+        <form>
+          <div class="form-group">
+            <label class="form-label">
+              Message
+            </label>
+            <textarea class="form-input"
+              placeholder="Paste the text you'd like analyzed here."
+              rows="5">
+              {{corpus}}
+            </textarea>
+          </div>
+        </form>
+        <p>
+          Agentic: {{each agenticAdjectives as #adj}}{{#adj}}, {{/each}}
+        </p>
+        <p>
+          Communal: {{each communalAdjectives as #adj}}{{#adj}}, {{/each}}
+        </p>
+      </div>
+    </div>
+  </div>
