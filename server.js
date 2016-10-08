@@ -11,6 +11,7 @@ app.loadStyles(__dirname + '/styles')
 
 app.component(require('d-connection-alert'))
 app.component(require('d-before-unload'))
+app.component(require('./src/components/main'))
 
 app.get('/', (page, model, params, next) => {
   page.render('index.html')
