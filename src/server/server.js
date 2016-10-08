@@ -7,6 +7,7 @@ let MongoStore = require('connect-mongo/es5')(session);
 let highway = require('racer-highway');
 let ShareDbMongo = require('sharedb-mongo');
 let path = require('path');
+
 derby.use(require('racer-bundle'));
 
 function setup(app, options, cb) {
