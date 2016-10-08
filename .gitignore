@@ -45,3 +45,6 @@ jspm_packages
 
 # OSX Misc file
 .DS_Store
+
+# Derby build files
+public/derby

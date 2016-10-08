@@ -1,0 +1,31 @@
+{
+  "name": "feedbackcoach",
+  "version": "0.0.1",
+  "description": "...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/distracteddev/feedbackcoach.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/distracteddev/feedbackcoach/issues"
+  },
+  "homepage": "https://github.com/distracteddev/feedbackcoach#readme",
+  "dependencies": {
+    "bufferutil": "^1.2.1",
+    "compression": "^1.6.2",
+    "connect-mongo": "^1.2.1",
+    "derby": "^0.9.3",
+    "express": "^3.21.2",
+    "express-session": "^1.14.0",
+    "racer-bundle": "^0.2.5",
+    "racer-highway": "^7.1.0",
+    "serve-favicon": "^2.3.0",
+    "sharedb-mongo": "^1.0.0-beta",
+    "utf-8-validate": "^1.2.1"
+  }
+}
