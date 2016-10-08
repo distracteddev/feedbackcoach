@@ -4,31 +4,6 @@
  * 2. Correct the line height in all browsers.
  * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
- .graph {
-    border-width: 0 0 1px 1px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, .25);
-    height: 100px;
-    margin: 0 0 15px 0;
-    position: relative;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, .1);
-    font-size: 0;
-}
-.bar {
-    display: inline-block;
-    margin: 0 0 0 1px;
-    vertical-align: bottom;
-    position: relative;
-    width: 75px;
-
-    background: #64f;
-}
-.bar:first-child {
-    height: 100%;
-    margin: 0;
-    width: 0;
-}
 html {
   font-family: sans-serif;
   /* 1 */
