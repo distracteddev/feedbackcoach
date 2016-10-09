@@ -42,10 +42,7 @@ AGENTIC = {
     persist: true,
     persistant: true,
     principled: true,
-    superior: true,
-    self-sufficient: true,
-    self-confident: true,
-    self-reliant: true
+    superior: true
   };
 
 
