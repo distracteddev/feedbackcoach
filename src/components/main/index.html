@@ -4,7 +4,7 @@
     <div class="columns">
       <div class="column col-12">
         <div class="description">
-            <p>Women continue to be underrepresented in male-dominated industries (business, the natural sciences, and engineering). De-genderization of wording is one way in which to minimize the perpetuation of gender-based inequalities in these fields (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>).
+            <p>Women continue to be underrepresented in male-dominated industries (business, the natural sciences, and engineering). De-genderization of wording is one way in which to minimize the perpetuation of gender-based inequalities in these fields (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>). Consider your own verbiage, its possible implications, and historical alternative comparisons between agency and communion: intellectual versus social good–bad, masculine versus feminine, instrumental versus expressive, competence versus warmth, dominant versus submissive, and trust versus autonomy.
             </p>
             <p><h4><small class="lead">To help minimize implicit gender bias, analyze the tone of your content to improve its effectiveness. Use the results to ensure your writing comes across with the social tone and emotional impact intended.
             </small></h4>
@@ -30,4 +30,55 @@
         </p>
       </div>
     </div>
+    <div class="columns">
+    <div class="column col-12">
+      <view is="communal-agentic-card"></view>
+    </div>
+    </div>
 </div>
+
+
+<communal-agentic-card:>
+  {{console.log(agenticAdjectives.length, communalAdjectives.length)}}
+  
+  {{if agenticAdjectives.length > communalAdjectives.length}}
+    <p>a·gen·tic (ā-jen'tik)<br>
+    Denotes self-directed actions aimed at personal development or personally chosen goals.<br>
+    Other associations: dominance, qualities relevant for goal-attainment, such as assertiveness, competence or persistence, goal-achievement and task functioning.</p>
+    <p>Generally, words like leader, assertive, confident, intellectual, ambitious, dominant, forceful, independent and outspoken are known as “agentic” (active/assertive) words and have typically described men in the past (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>).<br>
+    Such imbalances may not be intentional; sometimes it is merely a lack of awareness. The amplification of these micro-inequities builds on existing stereotypes, and may seem innocuous. Research has shown that such verbiage can be worse than outright discrimination because it harbors an unconscious and implicit bias. Research data suggests that the replacement of agentic wording with parallel communal wording will increase women's opportunities (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>)</p>
+    <p>We can achieve gender diversity when we change stereotypical thinking. Consider the following in your search for balance and equality:
+      <ul>
+        <li>Persistent -- Committed</li>
+        <li>Compentent -- Connected</li>
+        <li>Confident -- Passionate</li>
+        <li>Decisive -- Responsive</li>
+        <li>Assertive -- Helpful</li>
+        <li>Active -- Supportive</li>
+        <li>Resonsible -- Reliant</li>
+      </ul>
+    </p>
+  
+  {{else if communalAdjectives.length > agenticAdjectives.length}}
+    <p>com·mu·nal (kə-myo͞o′nəl, kŏm′yə-)<br>
+    Of, belonging to, or shared by the people of a community; public.<br>
+    Other associations: nurturance and qualities relevant for the establishment and maintenance of social relationships and social functioning (benevolence, trustworthiness)</p>
+    <p>Generally, the words nurturing, inclusive, helpful, affectionate, kind, sympathetic, tactful and agreeable are pretty positive; however, they are known as “communal” (social or emotive) words and have historically, stereotypically described women and feminine characteristics (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>).<br>
+    Such imbalances may not be intentional; sometimes it is merely a lack of awareness. The amplification of these micro-inequities builds on existing stereotypes, and may seem innocuous. Research has shown that such verbiage can be worse than outright discrimination because it harbors an unconscious and implicit bias. Even when communal words are used to describe men seeking "stereotypically female" jobs such as nurse, teacher or social worker, they, too, are overlooked (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>)</p>
+    <p>We can achieve gender diversity when we change stereotypical thinking. Consider the following in your search for balance and equality:<br>
+      <ul>
+        <li>Committed -- Persistent</li>
+        <li>Connected -- Compentent</li>
+        <li>Passionate -- Confident</li>
+        <li>Responsive -- Decisive</li>
+        <li>Helpful -- Assertive</li>
+        <li>Supportive -- Active</li>
+        <li>Reliant -- Responsible</li>
+      </ul>
+    </p>
+
+  {{else}}
+    <p>Your verbiage is well balanced and allows for a greater chance of diminishing unconscious and conscious bias. Research has shown agency and communion constitute two fundamental dimensions of content in social cognition (<a href="https://www.researchgate.net/publication/264085315_Communal_and_Agentic_Content_in_Social_Cognition_A_Dual_Perspective_Model">2</a>).</p>
+
+  {{/if}}
+
