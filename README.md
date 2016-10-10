@@ -22,7 +22,8 @@ Communal adjectives describe of, belonging to, or shared by the people of a comm
 
 First enter the feedback you'd like analyzed.
 
-![Screenshot of input card](/screenshots/input.png | width=250)
+<img src="/screenshots/input.png" alt="Screenshot of input card" width="100">
+
 
 The first results card shows your communal and agentic adjective usage.
 
