@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/distracteddev/feedbackcoach.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/distracteddev/feedbackcoach/issues"
   },
@@ -30,6 +30,7 @@
     "racer-highway": "^8.0.0",
     "serve-favicon": "^2.3.0",
     "sharedb-mongo": "^1.0.0-beta",
+    "superagent": "^2.3.0",
     "utf-8-validate": "^1.2.1"
   }
 }

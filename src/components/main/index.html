@@ -1,19 +1,13 @@
 <index:>
-  <h1>Feedback Coach</h1>
+
   <div class="container">
+    <h1 style="font-size:4rem;">Feedback Coach</h1>
     <div class="columns">
       <div class="column col-12">
-        <div class="description">
-            <p>Women continue to be underrepresented in male-dominated industries (business, the natural sciences, and engineering). De-genderization of wording is one way in which to minimize the perpetuation of gender-based inequalities in these fields (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>). Consider your own verbiage, its possible implications, and historical alternative comparisons between agency and communion: intellectual versus social good–bad, masculine versus feminine, instrumental versus expressive, competence versus warmth, dominant versus submissive, and trust versus autonomy.
-            </p>
-            <p><h4><small class="lead">To help minimize implicit gender bias, analyze the tone of your content to improve its effectiveness. Use the results to ensure your writing comes across with the social tone and emotional impact intended.
-            </small></h4>
-            </p>
-        </div>
         <form>
           <div class="form-group">
             <label class="form-label">
-              Message
+              Analyze the tone of your feedback! Ensure your writing comes across with the social tone and emotional impact intended.
             </label>
             <textarea class="form-input"
               placeholder="Paste the text you'd like analyzed here."
@@ -22,32 +16,43 @@
             </textarea>
           </div>
         </form>
-        <p>
-          Agentic: {{each agenticAdjectives as #adj}}{{#adj}}, {{/each}}
+        {{if showDetails}}
+        <p>Women continue to be underrepresented in male-dominated industries (business, the natural sciences, and engineering). De-genderization of wording is one way in which to minimize the perpetuation of gender-based inequalities in these fields (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>). Consider your own verbiage, its possible implications, and historical alternative comparisons between agency and communion: intellectual versus social good–bad, masculine versus feminine, instrumental versus expressive, competence versus warmth, dominant versus submissive, and trust versus autonomy.
         </p>
-        <p>
-          Communal: {{each communalAdjectives as #adj}}{{#adj}}, {{/each}}
-        </p>
+        {{/if}}
       </div>
     </div>
     <div class="columns">
-    <div class="column col-12">
-      <view is="communal-agentic-card"></view>
+      <div class="column col-12">
+        <view is="communal-agentic-card"></view>
+      </div>
     </div>
-    </div>
-</div>
+    <view is="emotion-card"></view>
+    <view is="language-style-card"></view>
+    <view is="social-tendencies-card"></view>
+  </div>
 
 
 <communal-agentic-card:>
-  {{console.log(agenticAdjectives.length, communalAdjectives.length)}}
-  
+  <h2>Your feedback verbiage is</h2>
   {{if agenticAdjectives.length > communalAdjectives.length}}
-    <p>a·gen·tic (ā-jen'tik)<br>
-    Denotes self-directed actions aimed at personal development or personally chosen goals.<br>
-    Other associations: dominance, qualities relevant for goal-attainment, such as assertiveness, competence or persistence, goal-achievement and task functioning.</p>
-    <p>Generally, words like leader, assertive, confident, intellectual, ambitious, dominant, forceful, independent and outspoken are known as “agentic” (active/assertive) words and have typically described men in the past (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>).<br>
-    Such imbalances may not be intentional; sometimes it is merely a lack of awareness. The amplification of these micro-inequities builds on existing stereotypes, and may seem innocuous. Research has shown that such verbiage can be worse than outright discrimination because it harbors an unconscious and implicit bias. Research data suggests that the replacement of agentic wording with parallel communal wording will increase women's opportunities (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>)</p>
-    <p>We can achieve gender diversity when we change stereotypical thinking. Consider the following in your search for balance and equality:
+    <p class="lead" style="color:red;">Agentic</p>
+    <p>
+     You used these agentic words: {{each agenticAdjectives as #adj, #i}}{{if #i !== 0}}, {{/if}}{{#adj}}{{/each}}. <a on-click="toggleDetails('readMoreAgentic')">Learn more</a>.
+   </p>
+    {{if readMoreAgentic}}
+    <p>
+      Denotes self-directed actions aimed at personal development or personally chosen goals.
+    </p>
+    <p>Other associations: dominance, qualities relevant for goal-attainment, such as assertiveness, competence or persistence, goal-achievement and task functioning.</p>
+    <p>
+      Generally, words like leader, assertive, confident, intellectual, ambitious, dominant, forceful, independent and outspoken are known as “agentic” (active/assertive) words and have typically described men in the past (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>).
+    </p>
+    <p>
+      Such imbalances may not be intentional; sometimes it is merely a lack of awareness. The amplification of these micro-inequities builds on existing stereotypes, and may seem innocuous. Research has shown that such verbiage can be worse than outright discrimination because it harbors an unconscious and implicit bias. Research data suggests that the replacement of agentic wording with parallel communal wording will increase women's opportunities (<a href="http://gender-decoder.katmatfield.com/static/Gaucher-Friesen-Kay-JPSP-Gendered-Wording-in-Job-ads.pdf">Gaucher, Friesen, Kay 2011</a>)
+    </p>
+    <p>
+      We can achieve gender diversity when we change stereotypical thinking. Consider the following in your search for balance and equality:
       <ul>
         <li>Persistent -- Committed</li>
         <li>Compentent -- Connected</li>
@@ -58,13 +63,22 @@
         <li>Resonsible -- Reliant</li>
       </ul>
     </p>
-  
+    <p><a on-click="toggleDetails('readMoreAgentic')">Collapse additional details</a></p>
+    {{/if}}
+
   {{else if communalAdjectives.length > agenticAdjectives.length}}
-    <p>com·mu·nal (kə-myo͞o′nəl, kŏm′yə-)<br>
-    Of, belonging to, or shared by the people of a community; public.<br>
-    Other associations: nurturance and qualities relevant for the establishment and maintenance of social relationships and social functioning (benevolence, trustworthiness)</p>
-    <p>Generally, the words nurturing, inclusive, helpful, affectionate, kind, sympathetic, tactful and agreeable are pretty positive; however, they are known as “communal” (social or emotive) words and have historically, stereotypically described women and feminine characteristics (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>).<br>
-    Such imbalances may not be intentional; sometimes it is merely a lack of awareness. The amplification of these micro-inequities builds on existing stereotypes, and may seem innocuous. Research has shown that such verbiage can be worse than outright discrimination because it harbors an unconscious and implicit bias. Even when communal words are used to describe men seeking "stereotypically female" jobs such as nurse, teacher or social worker, they, too, are overlooked (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>)</p>
+    <p class="lead" style="color:red;">Communal</p>
+    <p>
+    You used these communal words: {{each communalAdjectives as #adj, #i}}{{if #i !== 0}}, {{/if}}{{#adj}}{{/each}}. <a on-click="toggleDetails('readMoreCommunal')">Learn more</a>.</p>
+    {{if readMoreCommunal}}
+    <!-- <p>
+      <b>What is communal?</b> Of, belonging to, or shared by the people of a community; public. Other associations: nurturance and qualities relevant for the establishment and maintenance of social relationships and social functioning (benevolence, trustworthiness)
+    </p> -->
+    <p>
+      Words like nurturing, inclusive, helpful, affectionate, kind, sympathetic, tactful and agreeable are pretty positive; however, they are known as "communal" (social or emotive) words and have historically, stereotypically described women and feminine characteristics (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">1</a>).
+    </p><p>
+      Such imbalances may not be intentional; sometimes it is merely a lack of awareness. The amplification of these micro-inequities builds on existing stereotypes, and may seem innocuous. Research has shown that such verbiage can be worse than outright discrimination because it harbors an unconscious and implicit bias. Even when communal words are used to describe men seeking "stereotypically female" jobs such as nurse, teacher or social worker, they, too, are overlooked (<a href="http://www.hispanicoutlook.com/sylvia-mendoza/2015/8/6/can-word-choices-compromise-a-womans-career">2</a>)
+  </p>
     <p>We can achieve gender diversity when we change stereotypical thinking. Consider the following in your search for balance and equality:<br>
       <ul>
         <li>Committed -- Persistent</li>
@@ -76,9 +90,85 @@
         <li>Reliant -- Responsible</li>
       </ul>
     </p>
+    <p><a on-click="toggleDetails('readMoreCommunal')">Collapse additional details</a></p>
+    {{/if}}
 
   {{else}}
-    <p>Your verbiage is well balanced and allows for a greater chance of diminishing unconscious and conscious bias. Research has shown agency and communion constitute two fundamental dimensions of content in social cognition (<a href="https://www.researchgate.net/publication/264085315_Communal_and_Agentic_Content_in_Social_Cognition_A_Dual_Perspective_Model">2</a>).</p>
-
+    <p class="lead" style="color:green;">Well-balanced</p>
+    <p>You've used the same number of communal and agentic adjectives.</p>
   {{/if}}
 
+<emotion-card:>
+  <div class="columns">
+    <div class="column col-12">
+      <h2>Emotion</h2>
+      <p class="lead">
+        The emotion graph represents the likelihood that an emotion is present in your feedback.
+      </p>
+      {{each emotionTones as #tone}}
+        <div class="barchart">
+          <div class="tone-name text-right">
+            {{#tone.tone_name}}
+          </div>
+          <div class="tone-bar">
+          <view is="bar" bar-color="purple" percent="{{#tone.score * 100}}"></view>
+          </div>
+          <div class="tone-score text-left">
+            {{Math.round(#tone.score * 100)}}%
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+<language-style-card:>
+  <div class="columns">
+    <div class="column col-12">
+      <h2>Language Style</h2>
+      <p class="lead">
+        The Language Style and Social Tendencies graphs represent the amount of a language or social tone present in the text. <a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tone-analyzer/understanding-tone.shtml#social" target="_blank">Learn more</a>
+      </p>
+      {{each languageTones as #tone}}
+        <div class="barchart">
+          <div class="tone-name text-right">
+            {{#tone.tone_name}}
+          </div>
+          <div class="tone-bar">
+          <view is="bar" bar-color="green" percent="{{#tone.score * 100}}"></view>
+          </div>
+          <div class="tone-score text-left">
+            {{Math.round(#tone.score * 100)}}%
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+<social-tendencies-card:>
+  <div class="columns">
+    <div class="column col-12">
+      <h2>Social Tendencies</h2>
+      <p class="lead">
+        The emotion graph represents the likelihood that an emotion is present in your feedback. <a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tone-analyzer/understanding-tone.shtml#emotional" target="_blank">Learn more</a>
+      </p>
+      {{each socialTones as #tone}}
+        <div class="barchart">
+          <div class="tone-name text-right">
+            {{#tone.tone_name}}
+          </div>
+          <div class="tone-bar">
+          <view is="bar" bar-color="blue" percent="{{#tone.score * 100}}"></view>
+          </div>
+          <div class="tone-score text-left">
+            {{Math.round(#tone.score*100)/100}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+<bar:>
+  <svg width="100" height="20" viewBox="0 0 20 20">
+    <rect x="-50" y="0" width="100" height="20" fill="#eee"/>
+    <rect x="-50" y="0" width="{{@percent}}" height="20" fill="{{@barColor}}"/>
+  </svg>

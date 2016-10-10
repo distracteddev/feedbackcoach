@@ -1,4 +1,7 @@
+var request = require('superagent');
+var toneSample = require('./sample');
 var AGENTIC, COMMUNAL, Main;
+var USE_SAMPLE = true;
 
 AGENTIC = {
     daring: true,
@@ -120,18 +123,66 @@ module.exports = Main = (function() {
     this.corpus = this.model.at('corpus');
     this.agenticAdjectives = this.model.at('agenticAdjectives');
     this.communalAdjectives = this.model.at('communalAdjectives');
+    this.corpus.set('*  Definitely an executor - focuses on details - stories she told focused on execution\n* Organized (e.g. always on top of my tickets and my emails, coming in early to check the conference rooms)\n* Gets things done - self-described working style as "hard-working, will follow through"\n\nAreas of growth:\n* Speaking up - active communication - something she is aware she needs to work on -- received feedback from co-worker and manager to speak up more in meetings and to collaborate more - she talked about her goal to "learning to collaborate more and communicate better" -- but couldn\'t give any good examples >.<\n* Seeing more the big picture - definitely strength is focusing on details, which means will need to work on remembering to tie it in to the big picture. Also comes out when talking about problems, talks to the very tangible things.')
   };
-
+  Main.prototype.toggleDetails = function(detailPath) {
+    this.model.set(detailPath, !this.model.get(detailPath))
+  }
   Main.prototype.create = function() {
     this.corpus.on('change', (function(_this) {
       return function() {
         return _this.analyzeCorpus();
       };
     })(this));
+    if (USE_SAMPLE) {
+      this.processToneResults(toneSample);
+    }
+    // request.post('https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?version=2016-05-19')
+    //   .send({ text: 'Hello my friend'})
+    //   .set('Accept', 'application/json')
+    //   .end( function(err, res, body) {
+    //     if(res && res.statusCode === 200) {
+    //       console.log(body);
+    //       this.processToneResults(body);
+    //     } else {
+    //       console.log('status', res.statusCode);
+    //     }
+    //   });
   };
 
+  Main.prototype.processToneResults = function(results) {
+    console.log(results);
+    // results.document_tone
+    var toneCategories = results.document_tone.tone_categories;
+    console.log(toneCategories);
+    toneCategories.forEach((function(_this) {
+      return function(category) {
+        if(category.category_id === 'emotion_tone') {
+          _this.model.setDiffDeep('emotionTones', category.tones);
+        }
+        else if(category.category_id === 'social_tone') {
+          _this.model.setDiffDeep('socialTones', category.tones);
+        }
+        else if(category.category_id === 'language_tone') {
+          _this.model.setDiffDeep('languageTones', category.tones);
+        }
+
+        return;
+      };
+    })(this));
+
+    // toneCategories.forEach(function(_) {
+    //   return function(category) {
+    //     if(category.category_id === 'emotion_tone') {
+    //       console.log('category.tones');
+    //       console.log(category.tones);
+    //       _this.model.setDeepDiff('emotionTones', category.tones);
+    //     }
+    //   };
+    // });
+  }
+
   Main.prototype.analyzeCorpus = function() {
-    console.log('analyze!');
     var corpus = this.corpus.getDeepCopy();
 
     var communal = {};
@@ -147,7 +198,6 @@ module.exports = Main = (function() {
         communal[word] += 1;
       }
     }
-    console.log(agentic);
     this.agenticAdjectives.set(Object.keys(agentic));
     this.communalAdjectives.set(Object.keys(communal));
   };
