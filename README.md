@@ -22,7 +22,7 @@ Communal adjectives describe of, belonging to, or shared by the people of a comm
 
 First enter the feedback you'd like analyzed.
 
-![Screenshot of input card](/screenshots/input.png)
+![Screenshot of input card](/screenshots/input.png | width=250)
 
 The first results card shows your communal and agentic adjective usage.
 
@@ -35,7 +35,6 @@ The last three results cards show the results of a tone analysis (using [this AP
 ![Screenshot of emotion card](/screenshots/emotion.png)
 ![Screenshot of language style card](/screenshots/language-style.png)
 ![Screenshot of social tendencies card](/screenshots/social-tendencies.png)
-
 
 ## Open Open Source
 
